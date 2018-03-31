@@ -1,0 +1,20 @@
+<body>
+  <input id="username" type="text" placeholder="Name"><br/>
+  <input id="text" type="test" placeholder="Message"><br/>
+  <button id="post">Post</button><br/>
+  <div id="results"></div>
+  <script>
+    <!--Input code here -->
+    var myFirebase = new Firebase('https://primordial-arc-146121.firebaseio.com/');
+    var usernameInput = document.querySelector('#username');
+    var textInput = document.querySelector('#text');
+    var postButton = document.querySelector('#post');
+    postButton.addEventListener("click", function(){
+      var msgUser = usernameInput.value;
+      var msgText = textInput.value;
+      myFirebase.set(msgUser + " set " + msgText);
+      textInput.value = ""
+    });
+  </script>
+</body>
+</html>
