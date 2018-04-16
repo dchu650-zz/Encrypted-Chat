@@ -8,23 +8,35 @@ let msgKey;
 
 setKeyButton.addEventListener("click", function(){
   msgKey = keyInput.value;
-})
+});
 
 postButton.addEventListener("click", function(){
   let msgUser = usernameInput.value;
   let msgText = textInput.value;
-  let encryptText = encrypt(msgText, msgKey);
-  myFirebase.push({username:msgUser, text:encryptText});
+  if(msgKey != undefined){
+    let encryptText = encrypt(msgText, msgKey);
+    myFirebase.push({username:msgUser, text:encryptText});
+  }
+  else{
+    myFirebase.push({username:msgUser, text:msgText});
+  }
   textInput.value = "";
 });
+
+
 let startListening = function(){
   myFirebase.on('child_added', function(snapshot){
-    
+    ("msg: " + msgKey);
     let msg = snapshot.val();
     let msgUsernameElement = document.createElement("b"); 
     msgUsernameElement.textContent = msg.username;
     let msgTextElement = document.createElement("p");
-    msgTextElement.textContent = decrypt(msg.text,msgKey);
+    if(msgKey != undefined){
+      msgTextElement.textContent = decrypt(msg.text,msgKey);
+    }
+    else{
+      msgTextElement.textContent= msg.Text;
+    }
 
     let msgElement = document.createElement("div");
     msgElement.appendChild(msgUsernameElement);
