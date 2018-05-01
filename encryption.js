@@ -1,4 +1,4 @@
-let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-_+=~`',.?/ ";
+let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-_+=~`',.?/ <>:;'{}[]|";
 let alphabetChars = alphabet.split('');
 let lookUps = {};
 for(let i = 0; i < alphabet.length; i++){
