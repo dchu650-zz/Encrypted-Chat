@@ -28,7 +28,7 @@ let startListening = function(){
   myFirebase.on('child_added', function(snapshot){
     ("msg: " + msgKey);
     let msg = snapshot.val();
-    let msgUsernameElement = document.createElement("b"); 
+    let msgUsernameElement = document.createElement("b");
     msgUsernameElement.textContent = msg.username;
     let msgTextElement = document.createElement("p");
     if(msgKey != undefined){
@@ -37,7 +37,7 @@ let startListening = function(){
     else{
       msgTextElement.textContent= msg.Text;
     }
-
+    //creates element
     let msgElement = document.createElement("div");
     msgElement.appendChild(msgUsernameElement);
     msgElement.appendChild(msgTextElement);
